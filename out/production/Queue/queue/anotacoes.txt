@@ -1,0 +1,71 @@
+//        System.out.println("Tempo médio atendimento: " + fluxo.retornaHistoricoRequisicoes().stream().mapToDouble(t -> t.getTempoServico()).sum() / fluxo.retornaHistoricoRequisicoes().size());
+//        System.out.println("Tempo médio espera: " + fluxo.retornaHistoricoRequisicoes().stream().mapToDouble(t -> t.getTempoEspera()).sum() / fluxo.retornaHistoricoRequisicoes().size());
+//        System.out.println("Qtd SIMPLES: " + fluxo.retornaHistoricoRequisicoes().stream().filter(t -> t.getTipo().equals(TipoRequisicao.SIMPLES)).mapToDouble(value -> value.getTempoServico()).sum()/fluxo.retornaHistoricoRequisicoes().stream().filter(t -> t.getTipo().equals(TipoRequisicao.SIMPLES)).count());
+//        System.out.println("Qtd REGULAR: " + fluxo.retornaHistoricoRequisicoes().stream().filter(t -> t.getTipo().equals(TipoRequisicao.REGULAR)).count());
+//        System.out.println("Qtd COMPLEXA: " + fluxo.retornaHistoricoRequisicoes().stream().filter(t -> t.getTipo().equals(TipoRequisicao.COMPLEXA)).count());
+
+
+
+//        double linhaTempo = 0;
+//        double taxaChegada = 0.5;
+//        int numeroServidores = 7;
+//        int numeroRequisicoes = 1000;
+//
+//        ArrayList<Requisicao> historicoRequisicoes = new ArrayList<>();
+//        ArrayList<Servidor> servidores = new ArrayList<>();
+//
+//        for (int s = 0; s < numeroServidores; s++) {
+//            servidores.add(new Servidor(0.5, historicoRequisicoes));
+//        }
+//
+//        for (int r = 0; r < numeroRequisicoes; r++) {
+//            linhaTempo += StdRandom.exp(taxaChegada);
+//            Requisicao req = new Requisicao();
+//            req.setChegada(linhaTempo);
+//            req.setTipo(TipoRequisicao.retornaTipoRequisicaoAleatorio(1));
+//            Optional<Servidor> servidorLivre = servidores.stream().filter(s -> !s.estaOcupado(req)).findFirst();
+//            if (!servidorLivre.isPresent()) {
+//                Servidor servidorMenorTempoEspera = servidores.stream().min(Comparator.comparing(s -> s.tempoEspera(req))).get();
+//                double tempoEspera = servidorMenorTempoEspera.tempoEspera(req);
+//                req.setTempoEspera(tempoEspera);
+//                servidorMenorTempoEspera.atendimento(req);
+//            } else {
+//                servidorLivre.get().atendimento(req);
+//            }
+//        }
+//
+//
+        /*
+        double lambda = Double.parseDouble(args[0]);  // arrival rate
+        double mu = Double.parseDouble(args[1]);  // service rate
+        Fila<Double> fila = new Fila<>();
+        double proxChegada = StdRandom.exp(lambda);
+
+        double proxPartida = Double.POSITIVE_INFINITY;
+        double totalEsperaFila = 0.0;
+        long totalClientesAtendidos = 0;
+
+        Histograma hist = new Histograma(60);
+        StdDraw.setCanvasSize(1000, 600);
+
+        while (true) {
+            // quando a chegeda é maior que a partida então é uma cehagada
+            if (proxChegada <= proxPartida) {
+                // exceto quando a fila está vazia
+                if (fila.isEmpty()) proxPartida = proxChegada + StdRandom.exp(mu);
+                fila.enqueue(proxChegada);
+                proxChegada += StdRandom.exp(lambda); // gera proxima chegada
+
+            } else {
+                double espera = proxPartida - fila.dequeue(); // calcula o tempo em espera
+                hist.addDataPoint(Math.min(60, (int)(Math.round(espera))));
+                totalEsperaFila += espera;
+                totalClientesAtendidos++;
+                StdDraw.clear();
+                hist.draw();
+                StdDraw.show(0);
+                if (fila.isEmpty()) proxPartida = Double.POSITIVE_INFINITY;
+                else proxPartida += StdRandom.exp(mu);
+            }
+        }
+        */
