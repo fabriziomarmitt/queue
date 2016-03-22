@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="PostgreSQL - queue@localhost" uuid="24dd46c0-f4e8-4967-a646-a5f52751e16f">
+      <secret-storage>master_key</secret-storage>
+      <user-name>postgres</user-name>
+      <schema-pattern>queue.pg_catalog queue.public</schema-pattern>
+      <default-schemas>queue.pg_catalog queue.public</default-schemas>
+    </data-source>
+  </component>
+</project>

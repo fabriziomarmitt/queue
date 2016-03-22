@@ -6,13 +6,11 @@ import java.util.HashMap;
 
 public class Servidor {
     private String nome;
-    private double taxaDeServicoPadrao;
     private double tempoServico = 0;
     private double saida = 0;
     private HashMap<TipoRequisicao, Double> taxasDeServico = new HashMap<>();
 
-    public Servidor(double taxaDeServicoPadrao, String nome) {
-        this.taxaDeServicoPadrao = taxaDeServicoPadrao;
+    public Servidor(String nome) {
         this.nome = nome;
     }
 
@@ -22,10 +20,8 @@ public class Servidor {
     }
 
     public Requisicao atender(Requisicao requisicao) {
-        double taxaDeServico = this.taxasDeServico.containsKey(requisicao.getTipo())
-                ? this.taxasDeServico.get(requisicao.getTipo()).doubleValue()
-                : this.taxaDeServicoPadrao;
-        tempoServico = StdRandom.exp(taxaDeServico) + requisicao.getTempoServico();
+        double taxaDeServico = this.taxasDeServico.get(requisicao.getTipo()).doubleValue();
+        tempoServico = new Exponencial(taxaDeServico).gerar();
         saida = requisicao.getChegada() + requisicao.getTempoEspera() + tempoServico;
         return requisicao
                 .setTempoServico(tempoServico)
@@ -42,9 +38,5 @@ public class Servidor {
 
     public String getNome() {
         return nome;
-    }
-
-    public double getTaxaDeServico() {
-        return taxaDeServicoPadrao;
     }
 }

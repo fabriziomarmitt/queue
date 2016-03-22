@@ -53,14 +53,14 @@ public class GeradorRequisicoes {
     }
 
     public static void main(String[] args) throws IOException {
-        GeradorRequisicoes geradorRequisicoes = new GeradorRequisicoes(){{
-            adicionarFonte(new Fonte(){{
+        GeradorRequisicoes geradorRequisicoes = new GeradorRequisicoes() {{
+            adicionarFonte(new Fonte() {{
                 setDistribuicao(new Exponencial(0.1));
                 setTipo(TipoRequisicao.SIMPLES);
             }});
         }};
 
-        while(geradorRequisicoes.temNovaRequisicao(100)){
+        while (geradorRequisicoes.temNovaRequisicao(100)) {
             geradorRequisicoes.proximaRequisicao();
             System.out.println(new Exponencial(10).gerar());
             //System.out.println(LinhaDoTempo.retornaInstancia().retornaTempo());
